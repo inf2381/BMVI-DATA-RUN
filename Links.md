@@ -13,7 +13,7 @@
 
 
 ### Bahn Links
-* Bahnfahrplan(Key vorhanden)  http://data.deutschebahn.com/dataset/api-fahrplan
+* Bahnfahrplan(Key: DBhackFrankfurt0316)  http://data.deutschebahn.com/dataset/api-fahrplan
 * VBB Fahrplan: http://www.vbb.de/de/article/fahrplan/webservices/schnittstellen-fuer-webentwickler/5070.html
 * No idea:  https://github.com/dbopendata/db-fasta-api-java-client
 * Karte mit verfügbaren Verbänden:  https://github.com/highsource/verbundkarte
