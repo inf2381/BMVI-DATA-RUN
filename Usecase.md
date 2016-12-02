@@ -11,8 +11,9 @@ Livedaten:
 - Wetter, bestimmt Fahrradtauglichkeit
 
 Düsseldorf!
-Von:  52.638972, 13.278735 (Nibelungenstraße, Frohnau)
+Von:  51.241614, 6.855883 (Schwarzbachstraße, Düsseldorf )
 
-Zu:   52.529219, 13.378643 (BMVI)
+Zu:   51.216973, 6.767406 (Ministerium für Bauen, Wohnen, Stadtentwicklung und
+                           Verkehr des Landes Nordrhein-Westfalen)
 
 Zeit: 20161205T073000
