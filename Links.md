@@ -16,15 +16,26 @@
 
 ### navitia.io, nur public transport
 
-    https://api.navitia.io/v1/coverage/de/journeys?
+{http://doc.navitia.io/#journeys}
+
+    {https://api.navitia.io/v1/coverage/de/journeys?
         from=[LONG];[LAT]&
         to=[LONG];[LAT]&
-        datetime=[YYYYMMDDThhmmss]
+        datetime=[YYYYMMDDThhmmss]}
 
-Weitere Parameter:
+Weitere Parameter, *kursiv* ist default:
+
+    datetime_represents  = [departure|arrival]
+    data_freshness       = [realtime|*base_schedule*]
+    first_section_mode[] = [walking, car, bike, bss]
+       Mode of transport until public transport is reached
+       Inklusiv, d.h. alle gewünschten Modi müssen angegeben werden
+       bss = bike sharing system
+    last_section_mode[]  = siehe first_section_mode, aber für das letzte Stück
 
 Beispiel:
-    http://canaltp.github.io/navitia-playground/play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2Fde%2Fjourneys%3Ffrom%3Dstop_area%253AOBF%253ASA%253ACTP8011160%26to%3Dstop_area%253AOBF%253ASA%253ACTP8000156%26datetime%3D20161203T131506%26&token=86efcf17-2371-4a43-8be7-6d94b33c8d8c
+
+    http://canaltp.github.io/navitia-playground/play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fjourneys%3Ffrom%3D13.366738%253B52.589652%26to%3D13.378643%253B52.529219%26datetime%3D20161202T071500%26&token=86efcf17-2371-4a43-8be7-6d94b33c8d8c
 
 ### HERE, API Key 90 Tage gültig
 
