@@ -1,0 +1,34 @@
+{
+    "name": "BMVI/DataRun",
+    "description": "",
+    "keywords": [""],
+    "homepage": "http://abc.de/",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Lukas Gentele",
+            "email": "gentele@covexo.com",
+            "role": "Developer"
+        }
+    ],
+    "config": {
+        "discard-changes": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://gitlab.covexo.com/codex/codex.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://gitlab.covexo.com/codex/Auth.git"
+        }
+    ],
+    "require": {
+        "codex/codex": "master",
+        "codex/Auth": "master",
+        "epochblue/darksky-php": "master"
+    }
+}
