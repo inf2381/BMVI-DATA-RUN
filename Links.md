@@ -16,7 +16,7 @@
 
 ### navitia.io, (fast) nur public transport
 
-[Dokumentation]{http://doc.navitia.io/#journeys}
+[Dokumentation](http://doc.navitia.io/#journeys)
 
     https://api.navitia.io/v1/coverage/de/journeys?
         from=[LONG];[LAT]&
@@ -33,12 +33,12 @@ Weitere Parameter, *kursiv* ist default:
        bss = bike sharing system
     last_section_mode[]  = siehe first_section_mode, aber für das letzte Stück
 
-[Beispiel]{http://canaltp.github.io/navitia-playground/play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fjourneys%3Ffrom%3D13.366738%253B52.589652%26to%3D13.378643%253B52.529219%26datetime%3D20161202T071500%26&token=86efcf17-2371-4a43-8be7-6d94b33c8d8c}
+[Beispiel](http://canaltp.github.io/navitia-playground/play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fjourneys%3Ffrom%3D13.366738%253B52.589652%26to%3D13.378643%253B52.529219%26datetime%3D20161202T071500%26&token=86efcf17-2371-4a43-8be7-6d94b33c8d8c)
 
 
 ### HERE, API Key 90 Tage gültig
 
-[Quick Start]{https://developer.here.com/rest-apis/documentation/routing/topics/quick-start.html}
+[Quick Start](https://developer.here.com/rest-apis/documentation/routing/topics/quick-start.html)
 
     https://route.cit.api.here.com/routing/7.2/calculateroute.json
        ?app_id=6mQCzaGcLs8kliojD1Ha
@@ -47,7 +47,7 @@ Weitere Parameter, *kursiv* ist default:
        &waypoint1=geo!51.216973,6.767406
        &mode=fastest;car;traffic:enabled
 
-[Parameter]{https://developer.here.com/rest-apis/documentation/routing/topics/resource-calculate-route.html}
+[Parameter](https://developer.here.com/rest-apis/documentation/routing/topics/resource-calculate-route.html)
 
 Beispiel:
 
