@@ -10,7 +10,6 @@
 
 * Stefan's API Key: 42a5ce0e9f589a4a0907229d69c6ccdd
 
-
 ## Routing
 
 ### ~~OpenRouteService~~ *down*!
@@ -24,6 +23,8 @@
 
 Weitere Parameter:
 
+Beispiel:
+    http://canaltp.github.io/navitia-playground/play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2Fde%2Fjourneys%3Ffrom%3Dstop_area%253AOBF%253ASA%253ACTP8011160%26to%3Dstop_area%253AOBF%253ASA%253ACTP8000156%26datetime%3D20161203T131506%26&token=86efcf17-2371-4a43-8be7-6d94b33c8d8c
 
 ### HERE, API Key 90 Tage gültig
 
