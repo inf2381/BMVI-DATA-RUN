@@ -134,44 +134,47 @@ class MainController extends BaseController
         $params = $this->getRequest()->getParameters();
         if (isset($params["JSON"])) {
 
-            $retrievedObj = json_decode($params["JSON"]);
+            $retrievedObj = json_decode($params["JSON"], true);
 
             $trafalgar = new TrafficWarner();
 
-            foreach ($retrievedObj as $route) {
+            foreach ($retrievedObj as $key => $route) {
 
-                foreach ($route as $currentSegment) {
+                foreach ($route as $key2 => $currentSegment) {
 
                     //Checking weather conditions
 
-                    $pos = explode(',', $currentSegment["end"]);
-                    $weather = new WeatherData($this->apiKey, pos[0], pos[1]);
+                    $weather = new WeatherData($this->apiKey, $currentSegment["to"]["latitude"], $currentSegment["to"]["longitude"]);
 
                     $data = $weather->getWeatherDataInHour(1);
 
-                    if ($currentSegment["type"] == "Bike") {
+
+                    if ($currentSegment["type"] == "bike") {
                         //if ($data["precipProbability"] > 70) {
-                        if (rand(0,10) > 4) {
-                            $currentSegment["warnings"] = ["temperature" => "It will rain with!"];
+                        if (/*rand(0,10) > 4*/ true) {
+                            $retrievedObj[$key][$key2]["warnings"] = ["temperature" => (string)$data["precipProbability"] . "Es wird regnen!"];
                         }
                     }
-                    $currentSegment["temperature"] = $data["temperature"];
+                    $retrievedObj[$key][$key2]["temperature"] = $data["temperature"];
 
 
 
                     //Check for car traffic
 
-                    if ($currentSegment["type"] == "Car") {
+                    if ($currentSegment["type"] == "car") {
                         $jam = $trafalgar->checkForTraffic();
+
                         if ($jam != null) {
 
-                            $currentSegment["warnings"] = ["jam" => $jam];
-
+                            $retrievedObj[$key][$key2]["warnings"] = ["jam" => $jam];
                         }
                     }
 
 
+
                 }
+
+                var_dump($retrievedObj);
 
             }
         }
