@@ -151,7 +151,7 @@ class MainController extends BaseController
 
                     if ($currentSegment["type"] == "bike") {
                         //if ($data["precipProbability"] > 70) {
-                        if (/*rand(0,10) > 4*/ true) {
+                        if (/*rand(0,10) > 4*/ false) {
                             $retrievedObj[$key][$key2]["warnings"] = ["temperature" => (string)$data["precipProbability"] . "Es wird regnen!"];
                         }
                     }
