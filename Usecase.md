@@ -6,7 +6,7 @@ Aus der Vorstadt zum Bundesministerium für Verkehr und digitale Infrastruktur
 
 Düsseldorf
 
-    Von: 51.241614, 6.855883 (Schwarzbachstraße, Düsseldorf )
+    Von: 51.2427718 6.8612114 (Am Großen Dern, Düsseldorf )
 
     Zu:  51.216973, 6.767406 (Ministerium für Bauen, Wohnen, Stadtentwicklung und
                            Verkehr des Landes Nordrhein-Westfalen)
