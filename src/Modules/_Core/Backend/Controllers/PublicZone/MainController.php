@@ -1,6 +1,7 @@
 <?php
 namespace BMVI\Datarun\Controllers\PublicZone;
 
+use BMVI\Datarun\Helper\TrafficWarner;
 use BMVI\Datarun\Helper\WeatherData;
 use codex\codex\Routing\Annotations\Route;
 use codex\codex\Routing\BaseController;
@@ -122,4 +123,64 @@ class MainController extends BaseController
 
 
     }
+
+
+
+    /**
+     * @Route("/checkSegments")
+     */
+    public function traffic() : View
+    {
+        $params = $this->getRequest()->getParameters();
+        if (isset($params["JSON"])) {
+
+            $retrievedObj = json_decode($params["JSON"]);
+
+            $trafalgar = new TrafficWarner();
+
+            foreach ($retrievedObj as $route) {
+
+                foreach ($route as $currentSegment) {
+
+                    //Checking weather conditions
+
+                    $pos = explode(',', $currentSegment["end"]);
+                    $weather = new WeatherData($this->apiKey, pos[0], pos[1]);
+
+                    $data = $weather->getWeatherDataInHour(1);
+
+                    if ($currentSegment["type"] == "Bike") {
+                        //if ($data["precipProbability"] > 70) {
+                        if (rand(0,10) > 4) {
+                            $currentSegment["warnings"] = ["temperature" => "It will rain with!"];
+                        }
+                    }
+                    $currentSegment["temperature"] = $data["temperature"];
+
+
+
+                    //Check for car traffic
+
+                    if ($currentSegment["type"] == "Car") {
+                        $jam = $trafalgar->checkForTraffic();
+                        if ($jam != null) {
+
+                            $currentSegment["warnings"] = ["jam" => $jam];
+
+                        }
+                    }
+
+
+                }
+
+            }
+        }
+
+
+
+
+
+        exit();
+    }
+
 }

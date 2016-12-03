@@ -25,9 +25,5 @@ class WeatherData
     }
 
 
-    public static function getTemperature(){
-
-    }
-
 
 }
