@@ -29,6 +29,7 @@
     "require": {
         "codex/codex": "master",
         "codex/Auth": "master",
-        "epochblue/darksky-php": "master"
+        "epochblue/darksky-php": "master",
+        "canaltp/navitia":"~1.2"
     }
 }

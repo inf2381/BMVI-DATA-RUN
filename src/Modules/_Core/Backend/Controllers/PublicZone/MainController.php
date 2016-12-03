@@ -5,10 +5,12 @@ use BMVI\Datarun\Helper\WeatherData;
 use codex\codex\Routing\Annotations\Route;
 use codex\codex\Routing\BaseController;
 use codex\codex\UI\View\View;
+use DOMDocument;
 
 class MainController extends BaseController 
 {
     private $apiKey = '9280a2245fa3f4610557c32328ffcfa7';
+
     /**
      * @Route("/")
      */
@@ -19,7 +21,7 @@ class MainController extends BaseController
     }
 
     /**
- * @Route("/weather_forecast")
+     * @Route("/weather_forecast")
      */
     public function getWeatherForecast() : View
     {
@@ -51,5 +53,73 @@ class MainController extends BaseController
         }
 
         exit();
+    }
+
+
+    /**
+     * @Route("/routing")
+     */
+    public function getRouting() : View
+    {
+
+        $vehicles = ["Bicycle", "Car"];
+        $routes = [];
+
+        $params = $this->getRequest()->getParameters();
+
+        if (isset($params["start"])) {
+            $start = explode(';', $params["start"]);
+            if (isset($params["end"])) {
+                $end = explode(';', $params["end"]);
+            }
+        }
+
+
+        foreach ($vehicles as $currentVehicle) {
+            $routes[] = $this->getRoute($start, $end, $currentVehicle);
+        }
+
+        var_dump($routes);
+
+        exit();
+    }
+
+    private function getRoute($start, $end, $vehicle) {
+
+        $baseURL = "http://openls.geog.uni-heidelberg.de/route?api_key=ee0b8233adff52ce9fd6afc2a2859a28&start=";
+
+        $addition1 = "&via=&lang=de&distunit=KM&routepref=";
+
+        $addition2 = "&weighting=Shortest&avoidAreas=&useTMC=false&noMotorways=false&noTollways=false&noUnpavedroads=false&noSteps=false&noFerries=false&instructions=false";
+
+        //build url
+        $finalURL = $baseURL . (string)$start[0] . "," . (string)$start[1] . "&end=" . (string)$end[0] . "," . (string)$end[1] . $addition1 . $vehicle . $addition2;
+
+        var_dump($finalURL);
+
+        $curl = curl_init($finalURL);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+        $curl_response = curl_exec($curl);
+
+        if ($curl_response === false) {
+            $info = curl_getinfo($curl);
+            curl_close($curl);
+            die('error occured during curl exec. Additioanl info: ' . var_export($info));
+        }
+
+        curl_close($curl);
+
+        $dom = new \DOMDocument();
+
+        $dom->loadXML($curl_response);
+
+        var_dump($dom->saveXML());
+
+        return ($dom->getElementsByTagNameNS('http://www.opengis.net/gml', 'LineString'));
+
+
+
+
     }
 }
